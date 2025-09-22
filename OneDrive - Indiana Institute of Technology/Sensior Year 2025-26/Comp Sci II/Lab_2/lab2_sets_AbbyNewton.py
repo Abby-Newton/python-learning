@@ -161,7 +161,7 @@ def recommend_courses(student, student_schedules):
         'Jack':{'CHEM1010', 'CS2040'}
         }
     return set(student_schedules.keys[1](student_schedules.values)) - set(student_schedules.keys[2](student_schedules.values))
-    pass
+pass
 
 def test_enrollment_analysis():
     """Test all enrollmnet analysis functions"""
@@ -198,7 +198,10 @@ def process_text(text):
     Returns:
         Set of unique words
     """
-    
+    text = "Hello World!"
+    textprocessed1 = text.lower()
+    textprocessed2 = textprocessed1.translate(str.maketrans('','', string.punctuation))
+    print("Processed text:", textprocessed2)
     pass
     
 def calculate_similarity(text1, text2):
@@ -213,6 +216,14 @@ def calculate_similarity(text1, text2):
     Returns:
         Float between 0 and 1 (1 = identical vocabulary)
     """
+    text1 = "Hello World!"
+    text2 = "Hi World!"
+    set1 = set(text1.lower().split())
+    set2 = set(text2.lower().split())
+    intersection = set1 & set2
+    union = set1 | set2
+    Jaccard = intersection / union
+    print("Text similarities:", Jaccard)
     pass
 
 def find_unique_words(text1, text2):
@@ -226,6 +237,12 @@ def find_unique_words(text1, text2):
     Returns:
         Tuple of (words_only_in_text1, words_only_in_text2)
     """
+    text1 = "Hello World!"
+    text2 = "Hi World!"
+    words1 = set(text1.lower().split())
+    words2 = set(text2.lower().split())
+    unique_words = words1 | words2
+    print("The unique words are:", unique_words)
     pass
     
 def detect_common_phrases(texts, min_occurrences = 3):
@@ -233,12 +250,21 @@ def detect_common_phrases(texts, min_occurrences = 3):
     Find words that appear in at least min_occurrences texts.
 
     Args:
-        texts: :ist of text strings
+        texts: : list of text strings
         min_occurrences: Minimum number of texts word must appear in
         
     Returns:
         Set of common words
     """
+    texts = ["Hello World!", "Hi World!", "Adios World!"]
+    set1 = set(texts[1].lower().split())
+    set2 = set(texts[2].lower().split())
+    set3 = set(texts[3].lower().split())
+    intersection = set1 & set2 & set3
+    union = set1 | set2 | set3
+    Jaccard = intersection / union
+    min_occurrences = min(Jaccard)
+    print("The minimum occurences is:", min_occurrences)
     pass
 text_samples = {
     'student1':"""
@@ -262,6 +288,7 @@ text_samples = {
     significant indentation. Python is dynamically typed and garbage-collected.
     """
     }
+
 def plagiarism_check(submissions, threshold=0.7):
     """
     Check for potential plagiarism among submissions.
@@ -273,7 +300,11 @@ def plagiarism_check(submissions, threshold=0.7):
     Returns:
         List of (student1, student2, similarity) tuples above threshold
     """
+    submissions = {'Abby':'2316336', 'Ben':'2316446', 'Clark':'2316556'}
+    threshold = 0.7
+    print("the plagiarism is:", plagiarism_check(submissions, threshold))
     pass
+
 def writing_style_analysis(text):
     """
     Analyze writing style characteristics.
@@ -287,7 +318,14 @@ def writing_style_analysis(text):
         - average_word_length: Average length of words
         - word_diversity: Ratio of unique words to total words
     """
+    text = "Hello World!"
+    cleaned = text.translate(str.maketrans('', '', string.punctuation)).lower.split()
+    vocabulary_size = len(set(cleaned))
+    average_word_length = sum(len(word) for word in cleaned) / len(cleaned)
+    word_diversity = len(set(cleaned)) / len(cleaned)
+    print('vocab size:', vocabulary_size, 'word length average', average_word_length, 'diversity', word_diversity)
     pass
+
 print("\n=== Plagiarism Detection Results ===")
 results = plagiarism_check(text_samples, threshold=0.5)
 for student1, student2, similarity in results:
@@ -322,8 +360,15 @@ def find_mutual_friends(person1, person2, network):
     Returns:
         Set of mutual friends
 """
+    person1 = 'Abby'
+    person2 = 'Ben'
+    network = {person1: {'Ben', 'Alex', 'Riley'}, person2:{'Abby', 'Alex', 'Sam'}}
+    friends1 = network.get(person1, set())
+    friends2 = network.get(person2, set())
+    print('Mutual friends :', friends1 & friends2)
 # TODO: Implement this
 pass
+
 def suggest_friends(person, network, max_suggestions=3):
     """
     Suggest new friends based on mutual connections.
@@ -336,6 +381,13 @@ def suggest_friends(person, network, max_suggestions=3):
     Returns:
         List of (suggested_person, mutual_friend_count) tuples
 """
+    person = 'Abby'
+    network = {person:{'Ben', 'Alex', 'Sam'}}
+    max_suggestions = 3
+    if network.keys > max_suggestions:  
+        print('too many suggestions')
+    else:
+        print('suggestions:', network.keys)
 # TODO: Find friends of friends who aren't direct friends
 # TODO: Count mutual connections
 # TODO: Return top suggestions
@@ -350,6 +402,13 @@ def find_influencers(network, min_connections=4):
     Returns:
         Set of influencer names
 """
+    network = {'Abby': {'Ben', 'Alex', 'Riley'}, 'Ben':{'Abby', 'Alex', 'Sam'}}
+    min_connections = 4
+    influencers = set()
+    for person, friends in network.items():
+        if len(friends) >= min_connections:
+            influencers.add(person)
+    print('influencers:', influencers)
 # TODO: Implement this
 pass
 
@@ -363,6 +422,11 @@ def find_isolated_groups(network):
     Returns:
         List of sets, each containing an isolated group
     """
+    network = {'Abby': {'Ben', 'Alex', 'Riley'}, 'Ben':{'Abby', 'Alex', 'Sam'}}
+    if network[1] != network[2]:
+        print('isolated:', network)
+    else:
+        print('no one is isolated')
 # TODO: Advanced - find cliques with no external connections
 pass
 
@@ -395,9 +459,22 @@ def performance_comparison():
     
     # Test membership for non-existent element
     test_element = size + 1
+
     # TODO: Time list membership test (1000 iterations)
+    start_list = time.time()
+    result_list = test_element in data_list
+    end_list = time.time()
+    list_time = end_list - start_list
+    
     # TODO: Time set membership test (1000 iterations)
+    start_set = time.time()
+    result_set = test_element in data_set
+    end_set = time.time()
+    set_time = end_set - start_set
+    
     # TODO: Calculate and print speedup factor
+    print(f'List membership test took: {list_time:.6f} seconds', result_list)
+    print(f'Set membership test took: {set_time:.6f} seconds', result_set)
     pass
 
 def word_chain_game():
@@ -411,15 +488,37 @@ def word_chain_game():
     valid_words = {'apple', 'elephant', 'tiger', 'rabbit',
         'turtle', 'eagle', 'elk', 'koala', 'ant'}
     used_words = set()
-
+    current_word = input('word:').strip.lower()
+    if current_word not in valid_words:
+        print('pick a valid word')
+        return
+    used_words.add(current_word)
+    while True:
+        last_letter = current_word[-1]
+        print(f"\nCurrent word: {current_word}")
+        next_word = input(f"Enter a word starting with '{last_letter}':").strip().lower()
+        if next_word == 'quit':
+            print('Thanks! Bye')
+            break
+        if next_word in used_words:
+            print('already used this word')
+            continue
+        if next_word not in valid_words:
+            print('word not valid')
+            continue
+        if next_word[0] != last_letter:
+            print('does not start with ', {last_letter})
+            continue
+        used_words.add(next_word)
+        current_word = next_word
     # TODO: Implement game logic
     pass
 
 #1. When would you choose a set over a list for storing data?
-#
+# I would choose a set over a list if I needed unique items, a fast way to check data, performing mathematical operations, or if order does not matter.
 #2. Which set operation (union, intersection, difference) did you find most useful? Why?
-#
+# Probably intersection is the most useful because I frequently would need to find common elements in different datasets.
 #3. How much faster was set membership testing compared to list? Why?
-#
+# Way faster using sets than lists because sets allow direct access to elements, versus lists scan each element one by one.
 #4. What real-world problem could you solve using sets?
-#
+# There are many real-world problems that could be solved using sets including detectting duplicates, finding mutuals, finding unique elements, managing an inventory, and recommending items. Most of these can be used on social media platforms but also for data synthesis. 

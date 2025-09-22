@@ -371,15 +371,15 @@ def practice_4a_beginner():
     
     # TODO 1: Create f-string with name and age
     # Format: "Name: John Doe, Age: 25"
-    info1 = None  # Replace with f"Name: {name}, Age: {age}"
+    info1 = f"Name: {name}, Age: {age}"  # Replace with f"Name: {name}, Age: {age}"
     
     # TODO 2: Format height to 1 decimal place
     # Format: "Height: 5.9 feet"
-    info2 = None  # Replace with f"Height: {height:.1f} feet"
+    info2 = f"Height: {height: .1f} feet"  # Replace with f"Height: {height:.1f} feet"
     
     # TODO 3: Format weight to no decimal places
     # Format: "Weight: 171 lbs"
-    info3 = None  # Replace with f"Weight: {weight:.0f} lbs"
+    info3 = f"Weight: {weight: .0f} lbs"  # Replace with f"Weight: {weight:.0f} lbs"
     
     print(info1)
     print(info2)
@@ -406,17 +406,17 @@ def practice_4b_intermediate():
     
     for student in students:
         # TODO 1: Format name left-aligned in 15 characters
-        name_formatted = None  # Replace with f"{student['name']:<15}"
+        name_formatted = f"{student['name']:<15}"  # Replace with f"{student['name']:<15}"
         
         # TODO 2: Format score right-aligned with 1 decimal
-        score_formatted = None  # Replace with f"{student['score']:>10.1f}"
+        score_formatted = f"{student['score']:>10.1f}"  # Replace with f"{student['score']:>10.1f}"
         
         # TODO 3: Format grade right-aligned in 10 characters
-        grade_formatted = None  # Replace with f"{student['grade']:>10}"
+        grade_formatted = f"{student['grade']:>10}"  # Replace with f"{student['grade']:>10}"
         
         # TODO 4: Combine and print all formatted parts
         # Uncomment the next line when ready
-        # print(f"{name_formatted}{score_formatted}{grade_formatted}")
+        print(f"{name_formatted}{score_formatted}{grade_formatted}")
     
     # Calculate and display average
     avg_score = sum(s["score"] for s in students) / len(students)
@@ -455,12 +455,12 @@ def practice_4c_advanced():
     for item in sales_data:
         # Format each field appropriately
         # Uncomment and complete:
-        # row = f"│{item['product']:<15}│{item['units']:>8}│${item['price']:>9.2f}│${item['total']:>11.2f}│"
-        # print(row)
+        row = f"│{item['product']:<15}│{item['units']:>8}│${item['price']:>9.2f}│${item['total']:>11.2f}│"
+        print(row)
         grand_total += item["total"]
     
     # TODO: Print grand total
-    # print(f"│{'GRAND TOTAL':>36}│${grand_total:>11.2f}│")
+    print(f"│{'GRAND TOTAL':>36}│${grand_total:>11.2f}│")
 
 
 # ============================================================
@@ -481,11 +481,11 @@ def practice_5a_beginner():
     
     # TODO 1: Get the first name (first 4 characters)
     # Use: full_name[:4]
-    first_name = None  # Replace None
+    first_name = full_name[:4]  # Replace None
     
     # TODO 2: Get the last name (last 5 characters)
     # Use: full_name[-5:]
-    last_name = None  # Replace None
+    last_name = full_name[-5:]  # Replace None
     
     # Email address
     email = "user@example.com"
@@ -493,10 +493,10 @@ def practice_5a_beginner():
     
     # TODO 3: Get username (everything before @)
     at_position = email.find("@")
-    username = None  # Replace with email[:at_position]
+    username = email[:at_position]  # Replace with email[:at_position]
     
     # TODO 4: Get domain (everything after @)
-    domain = None  # Replace with email[at_position+1:]
+    domain = email[at_position+1:]  # Replace with email[at_position+1:]
     
     print(f"\nExtracted from name:")
     print(f"  First name: {first_name}")
@@ -528,12 +528,12 @@ def practice_5b_intermediate():
         clean_card = card.replace("-", "").replace(" ", "")
         
         # TODO 1: Get last 4 digits
-        last_four = None  # Replace with clean_card[-4:]
+        last_four = clean_card[-4:]  # Replace with clean_card[-4:]
         
         # TODO 2: Create masked version
         # Show only last 4 digits, mask the rest with *
         if len(clean_card) >= 4:
-            masked = None  # Replace with "*" * (len(clean_card) - 4) + last_four
+            masked = "*" * (len(clean_card)-4) + last_four  # Replace with "*" * (len(clean_card) - 4) + last_four
             
             print(f"Masked: {masked}")
 
@@ -562,13 +562,13 @@ def practice_5c_advanced():
         level_end = entry.find(":", level_start)
         
         # TODO 1: Extract timestamp (between [ and ])
-        timestamp = None  # Replace with entry[1:timestamp_end]
+        timestamp = entry[1:timestamp_end]  # Replace with entry[1:timestamp_end]
         
         # TODO 2: Extract log level (INFO, ERROR, WARNING)
-        level = None  # Replace with entry[level_start:level_end]
+        level = entry[level_start:level_end]  # Replace with entry[level_start:level_end]
         
         # TODO 3: Extract message (everything after level:)
-        message = None  # Replace with entry[level_end+2:]
+        message = entry[level_end+2:]  # Replace with entry[level_end+2:]
         
         # Store parsed data
         parsed = {
@@ -611,11 +611,12 @@ def practice_6_final_project():
     print(sample_text)
     print("\n" + "-"*50)
     
-    # TODO: Implement a complete text processing pipeline
     
+    # TODO: Implement a complete text processing pipeline
     # Step 1: Clean up whitespace
     # - Remove leading/trailing spaces
     # - Replace multiple spaces with single space
+
     
     # Step 2: Standardize case
     # - Sentences should be properly capitalized
@@ -631,6 +632,18 @@ def practice_6_final_project():
     processed_text = sample_text  # Start with original
     
     # Add your processing steps...
+    no_spaces_text = processed_text.strip()
+    no_spaces_text = len(no_spaces_text)
+    no_double_spaces_text = processed_text.replace("  ", " ")
+    no_double_spaces_text = len(no_double_spaces_text)
+    sentences_format = processed_text.upper()
+    sentences_format = len(sentences_format)
+    email_format = processed_text.lower()
+    email_format = len(email_format)
+    email = processed_text.find("@")
+    email = len(email)
+    phone_number = processed_text.find("number")
+    phone_number = len(phone_number)
     
     
     print("\nProcessed text:")
@@ -651,38 +664,32 @@ def main():
     print("="*60)
     
     # UNIT 1 Exercises
-    # practice_1a_beginner()
-    print(practice_1a_beginner())
-    # practice_1b_intermediate()
-    print(practice_1b_intermediate())
-    # practice_1c_advanced()
-    print(practice_1c_advanced())
+    practice_1a_beginner()
+    practice_1b_intermediate()
+    practice_1c_advanced()
     
     # UNIT 2 Exercises
-    # practice_2a_beginner()
-    print(practice_2a_beginner())
-    # practice_2b_intermediate()
-    print(practice_2b_intermediate())
-    # practice_2c_advanced()
-    print(practice_2c_advanced())
+    practice_2a_beginner()
+    practice_2b_intermediate()
+    practice_2c_advanced()
     
     # UNIT 3 Exercises
-    # practice_3a_beginner()
-    # practice_3b_intermediate()
-    # practice_3c_advanced()
+    practice_3a_beginner()
+    practice_3b_intermediate()
+    practice_3c_advanced()
     
     # UNIT 4 Exercises
-    # practice_4a_beginner()
-    # practice_4b_intermediate()
-    # practice_4c_advanced()
+    practice_4a_beginner()
+    practice_4b_intermediate()
+    practice_4c_advanced()
     
     # UNIT 5 Exercises
-    # practice_5a_beginner()
-    # practice_5b_intermediate()
-    # practice_5c_advanced()
+    practice_5a_beginner()
+    practice_5b_intermediate()
+    practice_5c_advanced()
     
     # UNIT 6 Final Project
-    # practice_6_final_project()
+    practice_6_final_project()
     
     print("\n" + "="*60)
     print("End of exercises. Great work!")
