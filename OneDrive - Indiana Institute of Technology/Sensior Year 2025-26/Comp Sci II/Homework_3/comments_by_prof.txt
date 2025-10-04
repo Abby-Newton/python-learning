@@ -1,0 +1,39 @@
+1. Grading Rubric:
+   * String methods:          
+    * Receipt Formatting     10 out of 10
+    * Data Processing        12 out of 12
+    * Text Analysis          13 out of 13
+   * Regular Expression:     
+    * Pattern Finding        10 out of 10
+    * Format Validation      12 out of 12
+    * Information Extraction 13 out of 13
+   * Combined:                
+    * Cleaning Pipeline      10 out of 10
+    * Smart Replace          10 out of 10
+   * Application:            
+    * Log Analysis           7 out of 10 
+   
+Total: 97 out of 100
+
+Great job, Abby!
+
+   Details:
+   Line 91: Nice using a function not covered in class!
+   Line 96-101: Nice checking against these boundary conditions
+   Line 143: This is valid, but better just use if total_words: or if bool(total_words)
+   Line 155: Good job using this function that we learned earlier this semester!
+   Line 160: re.split not covered in class
+   Line 204: This will match words with only one digit
+   Line 330-343: '.'.capitalize() return itself. So this is not necessary, even
+                 though faster
+   Line 404-406: Nice handling capitalized case as well
+   Line 451-456: Use specific group for each parts
+   Line 460-467: Use date_str, hour_str, minute, second you have Extracted
+
+
+
+
+
+
+
+
