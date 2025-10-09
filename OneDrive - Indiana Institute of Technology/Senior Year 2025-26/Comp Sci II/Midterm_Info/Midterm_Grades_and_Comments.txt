@@ -1,0 +1,34 @@
+Great job, Abigail
+
+Grading Rubrics:
+    Problem 1:
+    - add_student:                  4 out of 5 points
+    - get_class_average:            10 out of 5 points
+    - get_passing_students:         10 out of 10 bonus points
+
+    Problem 3:
+    - calculate_daily_averages:     5 out of 5 points
+    - find_hottest_day:             5 out of 5 points
+    - count_cold_readings:          5 out of 5 points
+    - normalize_temperatures:       5 out of 5 points
+
+    Problem 4:
+    - clean_name:                   5 out of 5 points
+    - validate_email:               4 out of 5 points
+    - format_phone:                 4 out of 5 points
+    - process_registration:         5 out of 5 points
+
+    Problem 5:
+    - find_all_phones:              5 out of 5 points
+    - find_all_prices:              5 out of 5 points
+    - extract_emails:               5 out of 5 points
+    - validate_student_id:          5 out of 5 points
+
+Total Points: 82 out of 35
+Details:
+1. Line 31: This assumes that the grade is already in the dictionary
+2. Line 30-36: No need to use dictionary of dictionaries
+3. Line 149: No need to reshape the ndarray
+4. Line 161-162: Nice checking for division by zero! When all the values are the same--normalize returns all ones.
+5. Line 216: This does not make sure there is one . after @
+6. Line 219: phone.join use phone to put the letters together. use '' instead
