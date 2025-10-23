@@ -1,0 +1,38 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Shear rate range (100 to 10,000 s^-1)
+shear_rate = np.logspace(2, 4, 200)  # 100 to 10,000
+
+# Constants
+n = 1.5
+A = 0.01  # contact area in m^2
+
+# Consistency indices
+k_2_to_1 = 10
+k_3_to_1 = 20
+
+# Maximum force absorption before plateau (estimated)
+F_max_2_to_1 = 4000  # Newtons
+F_max_3_to_1 = 7000  # Newtons
+# Calculate raw force
+force_2_to_1 = k_2_to_1 * shear_rate**n * A
+force_3_to_1 = k_3_to_1 * shear_rate**n * A
+
+# Apply plateau (cap the force)
+force_2_to_1_capped = np.minimum(force_2_to_1, F_max_2_to_1)
+force_3_to_1_capped = np.minimum(force_3_to_1, F_max_3_to_1)
+
+# Plotting
+plt.figure(figsize=(10, 6))
+plt.plot(shear_rate, force_2_to_1_capped, label='2:1 Cornstarch:Water', linewidth=2)
+plt.plot(shear_rate, force_3_to_1_capped, label='3:1 Cornstarch:Water', linewidth=2, linestyle='--')
+
+plt.xscale('log')
+plt.xlabel('Shear Rate (1/s)')
+plt.ylabel('Force Absorbed (N)')
+plt.title('Force Absorption vs Shear Rate (with Plateau) for Oobleck Mixtures')
+plt.legend()
+plt.grid(True, which="both", ls="--", lw=0.5)
+plt.tight_layout()
+plt.show(
