@@ -23,6 +23,16 @@ def count_lines(filename):
             return len(f.readlines())
     except FileNotFoundError:
         return -1
+    
+#CORRECT ANSWER
+def count_lines(filename):
+    try:
+        with open(filename, 'r') as file:
+            lines = file.readlines()
+            return len(lines)
+    except FileNotFoundError:
+        return -1
+
 
 """
 Problem 2: Simple Class Design
@@ -42,6 +52,22 @@ class Rectangle:
 
     def perimeter(self):
         return 2 * (self.width + self.height)
+
+#CORRECT ANSWER
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+        
+    def area(self):
+        return self.width * self.height
+    
+    def perimeter(self):
+        return 2 * (self.width + self.height)
+    
+    def is_square(self):
+        return self.width == self.height
+    
 
 """
 Problem 3: Exception Handling
@@ -86,6 +112,21 @@ print(safe_divide(10, 2))     # 5.0
 print(safe_divide("10", "2")) # 5.0
 print(safe_divide(10, 0))     # Error: Cannot divide by zero
 print(safe_divide("abc", 2))  # Error: Invalid input
+
+#CORRECT ANSWER
+def safe_divide(a, b):
+    try:
+        num_a = float(a)
+        num_b = float(b)
+        
+        if num_b == 0:
+            return "Error: Cannot divide by zero"
+        
+        return num_a / num_b
+    
+    except (ValueError, TypeError):
+        return "Error: Invalid input"
+
 
 """
 Problem 4: Recursion - Sum of Digits
@@ -133,6 +174,18 @@ print(sum_of_digits(123)) # Should print: 6
 print(sum_of_digits(4567)) # Should print: 22
 print(sum_of_digits(5)) # Should print: 5
 print(sum_of_digits(0)) # Should print: 0
+
+#CORRECT ANSWER
+def sum_of_digits(n):
+    # Base case
+    if n == 0:
+        return 0
+
+    # Recursive case
+    last_digit = n % 10
+    remaining = n // 10
+    return last_digit + sum_of_digits(remaining)
+
 
 """
 Problem 5: Advanced Functions - Student Grade Processor
@@ -216,3 +269,34 @@ test_students = [
 result = process_grades(test_students)
 for student in result:
     print(f"{student['name']}: {student['average']:.1f} ({student['letter']})")
+
+#CORRECT ANSWER
+def process_grades(students):
+    # Step 1: Add averages
+    with_avg = list(map(
+        lambda s: {**s, 'average': sum(s['grades'])/len(s['grades'])},
+        students
+    ))
+    
+    # Step 2: Filter >= 60
+    passing = list(filter(lambda s: s['average'] >= 60, with_avg))
+
+    # Step 3: Add letter grades
+    def add_letter_grade(student):
+        avg = student['average']
+        if avg >= 90:
+            student['letter'] = 'A'
+        elif avg >= 80:
+            student['letter'] = 'B'
+        elif avg >= 70:
+            student['letter'] = 'C'
+        else:
+            student['letter'] = 'D'
+        return student
+    
+    with_letters = list(map(add_letter_grade, passing))
+
+    # Step 4: Sort by average
+    result = sorted(with_letters, key=lambda s: s['average'], reverse=True)
+
+    return result
