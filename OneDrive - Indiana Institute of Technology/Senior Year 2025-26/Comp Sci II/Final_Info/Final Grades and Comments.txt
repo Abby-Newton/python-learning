@@ -1,0 +1,72 @@
+Part I              32 out of 40
+Part II             48 out of 50
+Part II Grading Rubrics:
+Problem 1:              14 out of 25
+    Case insensitive:   2 out of 5
+    Open and read file: 10 out of 10
+    Count line:         2 out of 10
+    
+Problem 2:          8 out of 25
+    __init__:       2 out of 5
+    deposit:        2 out of 5
+    withdraw:       4 out of 10
+    get_balance:    2 out of 5
+
+Problem 3:              13 out of 25
+    convert numbers:    5 out of 5
+    parse operators:    3 out of 10 
+    Exception handling: 5 out of 10
+
+Problem 4:           6 out of 25
+    Ignore spaces:  1 out of 5
+    Ignore cases:   1 out of 5
+    Base cases:     2 out of 5
+    Recursive step: 2 out of 10
+
+Problem 5:                  7 out of 25
+    Student average:         1 out of 5
+    Filter Passing:          3 out of 5
+    Filter Failing:          1 out of 5
+    Highest average student: 1 out of 5
+    class average:           1 out of 5
+Comments:
+    Problem 1: 
+    1. search needs to be case insensitive
+    2. Line 27: Use while not for statement for 
+                n needs an initial ValueError
+    3. Line 28: Wrong way to test if line contains word
+
+    Problem 2:
+    1. Line 44 and Line 54: Don't change the value of initial_balance
+        __init__ will always set initial balance to 0, 
+                no matter what parameter is provided
+    2. Line 71-76:
+        self.balance will never be changed
+
+    3. Line 94-99:
+        self.balance will never be changed
+
+    4. Line 102-111:
+        Line 110: don't do this!    
+    Problem 3:
+    1. Assume operation is character:
+        compare operation to character: should surround + with quotes
+    2. Line 152-162:
+        Wrong way of capturing error message
+    3. Return is wrong
+
+    Problem 4:
+    1. Python indexing of an array s[0], brackets and paratheses
+    2. s != str: wrong way to test if s is a string
+    3. No recursion step
+
+    Problem 5:
+    1. students is a list of tuples, the second element of each tuple is a list of grades
+       so these is no s['grades']
+    2. Line 258--wrong way of constructing lambda function
+    3. Line 258-- surrounding list function with bracket, will create a list of one element
+    4. Line 269-- students does not have a key average
+
+
+
+
